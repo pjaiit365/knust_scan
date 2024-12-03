@@ -8,11 +8,13 @@ class Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return OnboardingContent(
-        nextScreen: () => const OnboardingSecondScreen(),
-        title: 'Welcome to KNUST Scan',
-        message:
-            'Welcome to our Document Verification Application, designed to ensure the authenticity of certificates and transcripts.',
-        buttonText: "Let's Go",
-        messageWidth: 324);
+      nextScreen: () => const OnboardingSecondScreen(),
+      title: 'Welcome to KNUST Scan',
+      message:
+          'Welcome to our Document Verification Application, designed to ensure the authenticity of certificates and transcripts.',
+      buttonText: "Let's Go",
+      messageWidth: 324,
+      imageLocation: 'assets/images/pending.png',
+    );
   }
 }

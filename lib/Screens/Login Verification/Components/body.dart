@@ -21,28 +21,29 @@ class Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final TextEditingController usernameController = TextEditingController();
+    final TextEditingController emailController = TextEditingController();
     final TextEditingController passwordController = TextEditingController();
     final TextEditingController studentNoController = TextEditingController();
 
     void login() async {
-      if (usernameController.text.isNotEmpty &&
+      if (emailController.text.isNotEmpty &&
           passwordController.text.isNotEmpty &&
           studentNoController.text.isNotEmpty) {
         var reqBody = {
-          'username': usernameController.text.trim(),
+          'username': emailController.text.trim(),
           'password': passwordController.text.trim(),
-          'refNumber': studentNoController.text.trim(),
+          'studentNum': studentNoController.text.trim(),
+          "certUserID": "66c85f96fb8357158d647828",
         };
         var response = await http.post(
-          Uri.parse(loginURL),
+          Uri.parse(checkUser),
           headers: {'Content-Type': 'application/json'},
           body: jsonEncode(reqBody),
         );
 
         var jsonResponse = jsonDecode(response.body);
 
-        if (jsonResponse['code'] == 200) {
+        if (response.statusCode == 200) {
           // Get.to(() => CertificateScreen());
           print(jsonResponse['body']);
           final data = jsonResponse['body'];
@@ -58,7 +59,7 @@ class Body extends StatelessWidget {
             );
           }
 
-          Get.to(() => CertificateScreen());
+          Get.to(() => const CertificateScreen());
 
           print(jsonResponse['body']);
         } else {
@@ -95,11 +96,11 @@ class Body extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   AppTextField(
-                    title: 'Username',
-                    controller: usernameController,
+                    title: 'Email',
+                    controller: emailController,
                     inputFormatter: [
                       FilteringTextInputFormatter.allow(
-                          RegExp(r'[a-zA-Z0-9@]')),
+                          RegExp(r'[a-zA-Z0-9@.]')),
                       LengthLimitingTextInputFormatter(20),
                     ],
                     isPasswordSeen: true,
@@ -157,7 +158,7 @@ class Body extends StatelessWidget {
                   color: primary,
                 ),
                 alignment: Alignment.center,
-                child: Text(
+                child: const Text(
                   'Verify',
                   style: TextStyle(
                     color: white,

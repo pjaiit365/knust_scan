@@ -5,6 +5,8 @@ import 'package:knust_scan/Controller/scan_controller.dart';
 import 'package:knust_scan/Controller/zoom_controller.dart';
 import 'package:knust_scan/Screens/Results%20Screen/results_screen.dart';
 import 'package:knust_scan/Screens/constants.dart';
+import 'package:http/http.dart' as http;
+import 'package:knust_scan/Services/config.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 
 class Body extends StatelessWidget {
@@ -15,6 +17,22 @@ class Body extends StatelessWidget {
     ScanController scanController = Get.put(ScanController());
     ZoomController zoomController = Get.put(ZoomController());
     MobileScannerController controller = MobileScannerController();
+    String certID = '';
+
+    void checkCertValidity() async {
+      try {
+        var response = await http.post(Uri.parse(readCertURL),
+            headers: {'Content-Type': 'application/json'},
+            body: {'_id': certID});
+
+        if (response.statusCode == 200) {
+          var jsonResponse = response.body;
+          // final certData = jsonResponse['data'];
+        }
+      } catch (e) {
+        print(e.toString());
+      }
+    }
 
     return GetBuilder<ZoomController>(
       builder: (_) {

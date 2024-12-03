@@ -1,2 +1,3 @@
-const backendURL = 'http://172.26.38.91:3000/';
-const loginURL = '${backendURL}readCertData';
+const backendURL = 'http://192.168.43.59:3000/';
+const readCertURL = '${backendURL}readCertData';
+const checkUser = '${backendURL}login';

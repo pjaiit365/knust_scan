@@ -19,14 +19,16 @@ class OnboardingThirdScreen extends StatelessWidget {
       ),
       backgroundColor: backgroundColor,
       body: OnboardingContent(
-          pageNumber: 3,
-          nextScreen: () => const ScanScreen(),
-          buttonIcon: true,
-          title: 'Something something',
-          message:
-              'This tool also aids potential employers in verifying the credentials of prospective employees, maintaining trust and integrity in academic and professional qualifications.',
-          buttonText: 'Next',
-          messageWidth: 320),
+        pageNumber: 3,
+        nextScreen: () => const ScanScreen(),
+        buttonIcon: true,
+        title: 'Trust & Integrity',
+        message:
+            'This tool also aids potential employers in verifying the credentials of prospective employees, maintaining trust and integrity in academic and professional qualifications.',
+        buttonText: 'Next',
+        messageWidth: 320,
+        imageLocation: 'assets/images/approve.png',
+      ),
     );
   }
 }

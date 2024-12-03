@@ -49,14 +49,16 @@ class OnboardingSecondScreen extends StatelessWidget {
       ),
       backgroundColor: backgroundColor,
       body: OnboardingContent(
-          pageNumber: 2,
-          nextScreen: () => OnboardingThirdScreen(),
-          buttonIcon: true,
-          title: 'QR Code',
-          message:
-              'By scanning the QR code on each document, our system quickly verifies its legitimacy, providing you with immediate confirmation of its authenticity.',
-          buttonText: 'Next',
-          messageWidth: 320),
+        pageNumber: 2,
+        nextScreen: () => OnboardingThirdScreen(),
+        buttonIcon: true,
+        title: 'QR Code',
+        message:
+            'By scanning the QR code on each document, our system quickly verifies its legitimacy, providing you with immediate confirmation of its authenticity.',
+        buttonText: 'Next',
+        messageWidth: 320,
+        imageLocation: 'assets/images/valid_cert.png',
+      ),
     );
   }
 }

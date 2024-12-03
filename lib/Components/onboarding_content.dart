@@ -10,6 +10,7 @@ class OnboardingContent extends StatelessWidget {
   final String title;
   final String message;
   final String buttonText;
+  final String imageLocation;
   final double messageWidth;
   final nextScreen;
   bool buttonIcon;
@@ -23,6 +24,7 @@ class OnboardingContent extends StatelessWidget {
     this.buttonIcon = false,
     this.pageNumber = 1,
     required this.nextScreen,
+    required this.imageLocation,
   });
 
   @override
@@ -42,7 +44,13 @@ class OnboardingContent extends StatelessWidget {
             ),
           ),
         ),
-        SizedBox(height: 310 * screenHeight),
+        SizedBox(height: 46 * screenHeight),
+        Image.asset(
+          imageLocation,
+          width: 282 * screenWidth,
+          height: 233 * screenHeight,
+        ),
+        SizedBox(height: 30 * screenHeight),
         SizedBox(
           width: messageWidth * screenWidth,
           height: 91 * screenHeight,
